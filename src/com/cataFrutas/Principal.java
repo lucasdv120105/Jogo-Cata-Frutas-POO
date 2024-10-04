@@ -1,6 +1,6 @@
-package src.main.java.com.catafrutas;
+package src.com.cataFrutas;
 
-public class Fruta {
+public class Principal {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
