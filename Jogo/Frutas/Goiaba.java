@@ -1,16 +1,46 @@
 package Frutas;
 
-import Jogador.Jogador;
+import java.awt.Point;
 
-public class Goiaba extends Fruta {
-
-    public Goiaba(int x, int y) {
-        super("Goiaba", x, y);
+/**
+ * A classe Goiaba representa uma fruta sem poderes especiais
+ * Esta classe herda da classe FrutaSemPoder e define uma fruta específica
+ * que pode ser consumida por um jogador
+ */
+public class Goiaba extends FrutaSemPoder {
+	/**
+     * Construtor da classe Goiaba.
+     * Inicializa uma instância de Goiaba com o nome, posição e estado (bichada ou não)
+     *
+     * @param nome O nome da goiaba
+     * @param posicao A posição da goiaba na floresta
+     * @param bichada Um booleano que indica se a goiaba está bichada (true) ou não (false)
+     */
+	public Goiaba(Point posicao, boolean bichada) {
+		super(posicao, bichada);
+	}
+	
+	public Goiaba(boolean bichada) {
+		super(bichada);
+	}
+	
+    public String toString() {
+    	return "goaiaba";
     }
-
-    @Override
-    public void aplicarEfeito(Jogador jogador) {
-        // Apenas aumenta a força em 1
-        jogador.aumentarForca(1);
-    }
+	
+	public String getImg() {
+		return "/resources/goiaba.png";
+	}
+	
+	public String getImgMochila() {
+		return "/resources/goiaba_mochila.png";
+	}
+	
+	public String getImgArvore() {
+		return "/resources/goiabeira.png";
+	}
+	
+	public String arvore() {
+		return "Goiabeira";
+	}
 }

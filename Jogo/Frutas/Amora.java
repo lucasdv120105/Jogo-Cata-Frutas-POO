@@ -1,16 +1,49 @@
 package Frutas;
 
-import Jogador.Jogador;
+import java.awt.Point;
 
-public class Amora extends Fruta {
+/**
+ * A classe Amora representa uma fruta específica que possui um poder associado
+ * É uma subclasse de FrutaComPoder e herda suas propriedades, como nome, posição, e se está bichada
+ * Além disso, define o poder de valor 2
+ */
 
-    public Amora(int x, int y) {
-        super("Amora", x, y);
+public class Amora extends FrutaSemPoder {
+	
+	/**
+     * Construtor da classe Amora.
+     * Inicializa um objeto Amora com o nome, posição, e estado (bichada ou não)
+     * 
+     * @param nome O nome da fruta.
+     * @param posicao A posição da fruta na floresta, representada por um array de inteiros [X, Y]
+     * @param bichada Um booleano que indica se a fruta está bichada (true) ou não (false)
+     */
+	
+	public Amora(Point posicao, boolean bichada) {
+		super(posicao, bichada);
+	}
+	
+	public Amora(boolean bichada) {
+		super(bichada);
+	}
+	
+    public String toString() {
+    	return "amora";
     }
-
-    @Override
-    public void aplicarEfeito(Jogador jogador) {
-        // Apenas aumenta a força em 1
-        jogador.aumentarForca(1);
-    }
+	
+	public String getImg() {
+		return "/resources/amora.png";
+	}
+	
+	public String getImgMochila() {
+		return "/resources/amora_mochila.png";
+	}	
+	
+	public String getImgArvore() {
+		return "/resources/amoreira.png";
+	}
+	
+	public String arvore() {
+		return "Amoreira";
+	}
 }

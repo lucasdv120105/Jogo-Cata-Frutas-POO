@@ -1,17 +1,52 @@
 package Frutas;
 
-import Jogador.Jogador;
+import java.awt.Point;
 
-public class Coco extends Fruta {
+/**
+ * A classe Coco representa uma fruta específica que possui um poder associado
+ * É uma subclasse de FrutaComPoder e herda suas propriedades, como nome, posição, e se está bichada
+ * Além disso, define o poder de valor 2
+ */
 
-    public Coco(int x, int y) {
-        super("Coco", x, y);
+public class Coco extends FrutaComPoder {
+	
+	/**
+     * Construtor da classe Coco.
+     * Inicializa um objeto Coco com o nome, posição, e estado (bichada ou não)
+     * Define o poder do abacate para 1
+     * 
+     * @param nome O nome da fruta
+     * @param posicao A posição da fruta na floresta, representada por um array de inteiros [X, Y]
+     * @param bichada Um booleano que indica se a fruta está bichada (true) ou não (false)
+     */
+	
+    public Coco(Point posicao, boolean bichada) {
+        super(posicao, bichada);
+        super.setPoder(1);
     }
-
-    @Override
-    public void aplicarEfeito(Jogador jogador) {
-        // Aplica o efeito especial: dobra os pontos de movimento
-        jogador.dobrarPontosDeMovimento();
-        jogador.aumentarForca(1);
+    
+    public Coco(boolean bichada) {
+        super(bichada);
+        super.setPoder(1);
     }
+    
+    public String toString() {
+    	return "coco";
+    }
+    
+	public String getImg() {
+		return "/resources/coco.png";
+	}
+	
+	public String getImgMochila() {
+		return "/resources/coco_mochila.png";
+	}	
+	
+	public String getImgArvore() {
+		return "/resources/coqueiro.png";
+	}
+	
+	public String arvore() {
+		return "Coqueiro";
+	}
 }

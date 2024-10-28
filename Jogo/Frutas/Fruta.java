@@ -1,41 +1,95 @@
 package Frutas;
 
+import java.awt.Point;
+
+import Floresta.Local;
 import Jogador.Jogador;
 
-public abstract class Fruta {
-    private String nome;
+/**
+ * A classe abstrata Fruta representa uma fruta genérica dentro do jogo, com propriedades comuns como
+ * nome, posição e estado (bichada ou não).
+ * Classes concretas que herdam de Fruta devem implementar o método comer
+ */
+
+public abstract class Fruta extends Local{
+	private Point posicao;
     private boolean bichada;
-    private int x, y;
 
-    // Construtor da fruta, sem o parâmetro 'bichada'
-    public Fruta(String nome, int x, int y) {
-        this.nome = nome;
-        this.x = x;
-        this.y = y;
-        this.bichada = false; // Inicia como não bichada, o estado será definido posteriormente
+    /**
+     * Construtor da classe Fruta
+     * Inicializa uma fruta com nome, posição e estado (bichada ou não)
+     * 
+     * @param posicao A posição da fruta na floresta
+     * @param bichada Um booleano que indica se a fruta está bichada (true) ou não (false)
+     */
+    
+    public Fruta(Point posicao, boolean bichada) {
+        this.setPosicao(posicao);
+        this.setBichada(bichada);
     }
+    
+    public Fruta(boolean bichada) {
+        this.setBichada(bichada);
+    }
+    
+    /**
+     * Define a posição da fruta na floresta
+     * 
+     * @param posicao A posição da fruta representada por um array de inteiros [X, Y]
+     */
+    
+    public void setPosicao(Point posicao) {
+        this.posicao = posicao;
+    }
+    
+    /**
+     * Retorna a posição da fruta
+     * 
+     * @return A posição da fruta como um array de inteiros [X, Y]
+     */
 
-    // Getters e Setters
-    public String getNome() {
-        return nome;
+    @Override
+    public Point getPosicao() {
+        return posicao;
     }
-
-    public boolean isBichada() {
-        return bichada;
-    }
+    
+    /**
+     * Define se a fruta está bichada
+     * 
+     * @param bichada Um booleano que indica se a fruta está bichada (true) ou não (false)
+     */
 
     public void setBichada(boolean bichada) {
         this.bichada = bichada;
     }
+    
+    /**
+     * Verifica se a fruta está bichada
+     * 
+     * @return true se a fruta estiver bichada, false caso contrário
+     */
 
-    public int getX() {
-        return x;
+    public boolean isBichada() {
+        return bichada;
     }
+    
+    /**
+     * Método abstrato para comer a fruta
+     * As subclasses devem fornecer a implementação de como a fruta afeta o jogador
+     *
+     * @param jogador O jogador que irá comer a fruta
+     */
 
-    public int getY() {
-        return y;
-    }
-
-    // Método abstrato para aplicar o efeito específico da fruta no jogador
-    public abstract void aplicarEfeito(Jogador jogador);
+    public abstract void comer(Jogador jogador);
+    
+    @Override
+    public abstract String toString();
+    
+    public abstract String getImg();
+    
+	public abstract String getImgMochila();
+	
+	public abstract String getImgArvore();
+	
+	public abstract String arvore();
 }
